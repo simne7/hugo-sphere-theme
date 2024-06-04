@@ -4,7 +4,7 @@
 
 The theme uses the following sections to build your CV.
 
-In the profile area in the sidebar:
+In the profile area (sidebar):
 
 * contact
 * education
@@ -13,8 +13,8 @@ In the profile area in the sidebar:
 
 In the main content:
 
-* motivation (also known as cover letter)
-* summary
+* motivation / cover letter (not included in screenshot below)
+* summary / career profile
 * experiences
 * skills
 * projects
@@ -84,8 +84,8 @@ DefaultContentLanguage = "en"
 
 You can configure base languages (`en/de/...`) and then create language variants using the region part (`-aws`) of the language code.
 
-The `languageName** can be used to define the items of the variant picker.
-If no `languageName** is set the language code is used.
+The `languageName` can be used to define the items of the variant picker.
+If no `languageName` is set the language code is used.
 
 Each language and variant can have their own parameters.
 This let's you exclude certain sections for some variants or use different styles per language.
@@ -127,6 +127,17 @@ Simple set the `style` parameter in your `config.toml`.
 style = "style1"
 ```
 
+![Sphere screenshot](/images/screenshot.jpg)
+
 You may even define different styles for certain variants.
 
-TODO add theme screenshot
+
+```toml
+DefaultContentLanguage = "en"
+[languages]
+  [languages.en]
+    title = "John Doe - CV"
+  [languages.de]
+    title = "John Doe - Lebenslauf"
+    style = "style6" # style for DE variant
+```
