@@ -18,7 +18,7 @@ Basic profile information is managed in `content/profile/_index.md`.
 Frontmatter variables:
 
 | Key       | Description                |
-|-----------+----------------------------|
+|-----------|----------------------------|
 | `name`    | Your name                  |
 | `tagline` | (Optional) Profile summary |
 | `picture` | Filename for picture       |
@@ -43,9 +43,9 @@ For `url` values `mailto:` and `tel:` links will work as expected.
 If titles for some URL, like e.g. a LinkedIn URL do not wrap nicely consider inserting a space in the link title.
 
 ```toml
-- icon: mdi-linkedin
-  title: linkedin.com/in/ johndaviddoe # note the space before "john"!
-  url: //linkedin.com/in/johndaviddoe
+  - icon: mdi-linkedin
+    title: linkedin.com/in/ johndaviddoe # note the space before "john"!
+    url: //linkedin.com/in/johndaviddoe
 ```
 
 ### Education

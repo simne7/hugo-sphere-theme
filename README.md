@@ -23,15 +23,13 @@ Additionally, the theme is optimized for print and ships prepared for `pagedjs` 
 
 ## Screenshot
 
-TODO 
-
-![Orbit screenshot](https://raw.githubusercontent.com/aerohub/hugo-orbit-theme/master/images/screenshot.png)
+![Sphere screenshot](/images/screenshot.jpg)
 
 ## Demo
 
 TODO
 
-You can see it in action on [Hugo Themes site](http://themes.gohugo.io/theme/hugo-orbit-theme/).
+You can see it in action on [Hugo Themes site](http://themes.gohugo.io/theme/hugo-sphere-theme/).
 
 ## Contents
 
@@ -40,8 +38,7 @@ You can see it in action on [Hugo Themes site](http://themes.gohugo.io/theme/hug
     - [Copying files](#copying-files)
     - [Configuring](#configuring)
     - [Test your site](#test-your-site)
-	- [Build your site](#build-your-site)
-- [Contributing](#contributing)
+    - [PDF export](#pdf-export)
 - [License](#license)
 
 
@@ -50,7 +47,6 @@ You can see it in action on [Hugo Themes site](http://themes.gohugo.io/theme/hug
 Grab the latest [`release`](//github.com/simne7/hugo-sphere-theme) and put it into the themes folder of your Hugo project.
 
 For more information read the official [setup guide](//gohugo.io/overview/installing/) of Hugo.
-
 
 ## Getting started
 
@@ -69,7 +65,7 @@ Or you copy the whole `exampleSite`, install the theme and adjust it to fit your
 Open your just-copied `config.toml` and fill it with your data.
 All other page content may be managed through dedicated content files.
 
-For a detailed description of content management see the [documentation](docs/index.md).
+For a detailed description of content management see the [documentation](//github.com/simne7/hugo-sphere-theme/blob/main/docs/index.md).
 
 ### Test your site
 
