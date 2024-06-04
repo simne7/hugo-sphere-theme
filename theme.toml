@@ -1,0 +1,17 @@
+name = "Sphere"
+license = "MIT"
+licenselink = "//github.com/simne7/hugo-sphere-theme/blob/master/LICENSE.md"
+description = "Resume/CV Theme for Developers"
+homepage = "//github.com/simne7/hugo-sphere-theme"
+tags = ["cv", "resume", "colour schemes"]
+features = ["colour schemes", "multilingual"]
+min_version = 0.16
+
+[author]
+  name = "Simon Mang"
+  homepage = "//viinet.de"
+
+[original]
+  name = "Xiaoying Riley"
+  homepage = "//github.com/xriley"
+  repo = "//github.com/xriley/Orbit-Theme"

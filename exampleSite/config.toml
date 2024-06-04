@@ -1,0 +1,58 @@
+# Page settings
+
+baseurl = "http://localhost:1313/"
+languageCode = "en"
+title = "John Doe - CV"
+theme = "hugo-sphere-theme"
+
+# Do not build files for websites. Need them? Set to false
+disableRSS = true
+disableSitemap = true
+disable404 = true
+
+# Languages and variants
+
+DefaultContentLanguage = "en"
+[languages]
+  [languages.en]
+    languageName = "English" # this will appear in the variants picker
+    title = "John Doe - CV"
+  [languages.de]
+    languageName = "Deutsch"
+    title = "John Doe - Lebenslauf"
+  [languages.de-aws] # simply create variants of a language...
+    languageName = "AWS (de)"
+    title = "John Doe - Lebenslauf (AWS)"
+    [languages.de-aws.params]
+      exclude = ["contact"] # ... and have different settings for them
+
+# Configuration
+
+[params]
+  # Meta
+  description = "Resume/CV Theme for Developers"
+  author = "John Doe"
+
+  # The original template comes with 6 colour schemes. You may choose styles below.
+  # "style1", "style2", "style3", ..., "style6" are available.
+  style = "style1"
+
+  # list excluded sections
+  # candidates are: contact, education, languages, interests, motivation, summary, experiences, skills, projects
+  exclude = ["motivation"]
+
+  # Footer section
+
+  # The original template is released under the Creative Commons Attribution 3.0 License.
+  # Please keep the original attribution link when using for your own project.
+  # If you'd like to use the template without the attribution,
+  # you can check out other license options via template author's website: themes.3rdwavemedia.com
+  #
+  # As for Hugo port you may rewrite the "Ported for..." line with setting your name below.
+  # [params.footer]
+  #   copyright = "John Doe"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+       unsafe = true

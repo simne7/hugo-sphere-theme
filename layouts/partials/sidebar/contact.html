@@ -1,0 +1,18 @@
+<section class="contact">
+<ul>
+{{ range .contact }}
+    <li>
+      <span class="icon-text">
+        <span class="icon">
+          <i class="mdi mdi-18px {{ .icon }}"></i>
+        </span>
+        {{ if .url }}
+        <a class="text" href="{{ .url }}">{{ .title }}</a>
+        {{ else }}
+        <span class="text">{{.title}}</span>
+        {{ end }}
+      </span>
+    </li>
+{{ end }}
+</ul>
+</section>

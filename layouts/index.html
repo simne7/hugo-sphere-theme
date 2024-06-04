@@ -1,0 +1,51 @@
+{{ define "main" }}
+
+<!-- merge current translation with base and default translations
+     base translation: de-at -> de (base: without the additional language code)
+     default translation: de -> en (default: language with weight 1 in config) -->
+
+{{ $defaultLangCode := (index .Site.Home.AllTranslations 0).Lang }}
+{{ $baseLangCode := index (split .Lang "-") 0 }}
+
+<!-- we can't use .Site.RegularPages here as it would strip files like _index.md -->
+{{ $pages := .Site.Pages }}
+{{ if ne .Lang $defaultLangCode }}
+  {{ $fallbackTranslations := uniq (slice $baseLangCode $defaultLangCode) }}
+  {{ range $lc := $fallbackTranslations }}
+    {{ range $.Site.Home.Translations }}
+      {{ if eq $lc .Lang }}
+        {{ $fallbackPages := .Site.Pages }}
+        {{ $pages = $pages | lang.Merge $fallbackPages }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ .Scratch.Set "AllPages" $pages }}
+
+<main class="container is-max-desktop">
+  <div class="columns reverse">
+    <!-- sidebar must come first, else pagedjs will place it right of last page only -->
+    <aside class="sidebar column is-3">
+      <!-- {{/* partial "sidebar.html" (.GetPage "/profile") */}} would break our translation inflater if a _index.<lang>.md is missing -->
+      {{ partial "sidebar/sidebar.html" . }}
+    </aside>
+    <div class="column main">
+      {{ if not (in .Site.Params.exclude "motivation") }}
+        {{ partial "motivation.html" . }}
+      {{ end }}
+      {{ if not (in .Site.Params.exclude "summary") }}
+        {{ partial "summary.html" . }}
+      {{ end }}
+      {{ if not (in .Site.Params.exclude "experiences") }}
+        {{ partial "experiences.html" . }}
+      {{ end }}
+      {{ if not (in .Site.Params.exclude "skills") }}
+        {{ partial "skills.html" . }}
+      {{ end }}
+      {{ if not (in .Site.Params.exclude "projects") }}
+        {{ partial "projects.html" . }}
+      {{ end }}
+    </div>
+  </div>
+</main>
+{{ end }}

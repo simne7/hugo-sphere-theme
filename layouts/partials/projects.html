@@ -1,0 +1,31 @@
+{{ $allPages := .Scratch.Get "AllPages" }}
+
+{{ with where $allPages "Section" "projects" }}
+<section class="section projects">
+  {{ with index (where . "IsSection" true) 0 }}
+    {{ partial "section_heading.html" (dict "icon" .Params.icon "title" .Params.title) }}
+    {{ with .Content }}
+      <p>{{ . | markdownify }}</p>
+    {{ end }}
+  {{ end }}
+  {{ with where . "IsPage" true }}
+  <ul>
+    {{ range .ByWeight }}
+      <li class="project">
+        <span class="title">
+          {{ if .Params.url }}
+            <a href="{{ .Params.url }}">{{ .Params.title }}</a>
+          {{ else }}
+            {{ .Params.title }}
+          {{ end }}
+        </span>
+        &nbsp;&mdash;&nbsp;
+        {{ with .Content }}
+          {{ . | markdownify }}
+        {{ end }}
+      </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</section>
+{{ end }}

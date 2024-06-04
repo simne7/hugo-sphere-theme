@@ -1,0 +1,11 @@
+{{ $allPages := .Scratch.Get "AllPages" }}
+
+{{ with index (where $allPages "Page.Path" "/motivation") 0 }}
+<section class="section motivation">
+    <div class="location">{{ .Params.location }}</div>
+    <h2 class="section-title">{{ .Params.salutation }},</h2>
+    <div class="motivation content">
+        {{ .Content | markdownify }}
+    </div><!--//summary-->
+</section><!--//section-->
+{{ end }}

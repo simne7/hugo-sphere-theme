@@ -1,0 +1,27 @@
+{
+  "name": "hugo-sphere-theme",
+  "version": "0.0.1",
+  "description": "Hugo theme for resumes/CV focussed on software developers and engineers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "hugo server --source exampleSite --themesDir=../..",
+    "make:dist": "rm -rf dist && npm run make:sass && npm run make:copy && npm run make:clean",
+    "make:sass": "sass -s compressed assets/sass/main.sass:dist/assets/css/main.css",
+    "make:copy": "cp -r archetypes exampleSite images layouts static README.md LICENSE.md theme.toml dist/ && cp -r assets/print dist/assets/",
+    "make:clean": "rm -rf dist/exampleSite/public dist/exampleSite/dist dist/exampleSite/resources dist/exampleSite/.*",
+    "postinstall": "cp -r node_modules/@mdi/font/fonts static"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.viinet.de:333/simon.mang/hugocvtheme.git"
+  },
+  "keywords": ["hugo", "theme", "orbit", "CV", "resume", "bulma"],
+  "author": "Simon Mang",
+  "license": "MIT",
+  "dependencies": {
+    "@mdi/font": "^5.9.55",
+    "bulma": "^0.9.3",
+    "sass": "^1.77.1"
+  }
+}

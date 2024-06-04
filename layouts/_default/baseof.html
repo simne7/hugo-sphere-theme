@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}" class="{{ .Site.Params.style }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{{ .Site.Params.description }}" />
+    <meta name="author" content="{{ .Site.Params.author }}" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/roboto.css" >
+    {{- partial "print/pagedjs-header.html" . -}}
+
+    <!--/*Load SASS during development*/-->
+    {{ with resources.Get "sass/main.sass" }}
+        {{ with . | toCSS | minify | resources.Fingerprint "md5" }}
+        <link rel="stylesheet" href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}">
+        {{ end }}
+    {{ else }}
+        <!--/*Load CSS when distributed*/-->
+        {{ with resources.Get "css/main.css" }}
+           {{ with . | resources.Fingerprint "md5" }}
+               <link rel="stylesheet" href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}">
+           {{ end }}
+        {{ end }}
+    {{ end }}
+
+    <title>
+    {{ block "title" . }}
+      {{ .Site.Title }}
+    {{ end }}
+    </title>
+  </head>
+  <body>
+    {{- partial "print/print-button.html" -}}
+
+    {{- partial "langs.html" . -}}
+
+    {{ block "main" . }}
+    {{ end }}
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+      <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can check out other license options via our website: themes.3rdwavemedia.com */-->
+        <small class="copyright">Designed with <i class="mdi mdi-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a></small><br>
+	      <small class="copyright">{{ now.Year }} &copy; {{ with .Site.Params.footer.copyright }}{{ . | markdownify }}{{ else }}Ported for Hugo by <a href="https://github.com/simne7" target="_blank">simne7</a>{{ end }}</small>
+      </div><!--//container-->
+    </footer><!--//footer-->
+  </body>
+</html>

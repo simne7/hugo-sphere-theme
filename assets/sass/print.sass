@@ -1,0 +1,124 @@
+@media screen
+  #print-btn
+    position: fixed
+    z-index: 20000
+    background: black
+    fill: white
+    color: white
+    padding: 1em
+    right: 30px
+    top: 30px
+
+@media print
+  @page
+    size: A4
+    margin: 1.5cm 1cm 1.5cm 5cm
+    @top-left-corner
+      content: " "
+      background: var(--theme-color)
+
+    @bottom-left-corner
+      content: " "
+      background: var(--theme-color)
+    @bottom-center:
+      content: counter(page)
+
+    @left-middle
+      content: ""
+      background: var(--theme-color)
+
+  @page:first
+    margin: 0 1cm 0 5cm
+    @top-left-corner
+      content: ""
+    @top-center:
+      content: ""
+    @bottom-left-corner
+      content: ""
+    @bottom-center:
+      content: ""
+
+    @left-middle
+      content: element(sidebar)
+      background: var(--theme-color)
+
+  html,body
+    background-color: #fff
+
+  .lang-menu
+    display: none
+
+  .sidebar
+    position: running(sidebar)
+    font-size: 10px
+    text-align: left
+    width: 5cm !important
+    margin-top: -3rem /* align with salutation */
+
+    header .name
+        font-size: 2em
+    section
+      padding: 1rem
+      h2
+        margin-bottom: 0.5rem
+      li
+        padding: 0.2rem 0
+    .contact
+      li .text
+        line-height: 1rem
+
+    .education .degree
+      margin-bottom: 0.1rem
+
+  /* remove space at top
+  /* and negative margins which cause overlap with sidebar
+  main > .columns
+    margin: 0
+    .main
+      padding: 0
+    &.reverse
+      flex-direction: row
+
+  .btn-translate
+    display: none
+
+  .section ~ .section
+    /* reduce gap between sections
+    padding-top: 0
+
+  .section.motivation
+    break-after: page
+    .content
+      text-align: justify
+
+  .section.experiences
+    .experience
+      .meta
+        break-after: avoid
+
+      .details
+        orphans: 3
+        widows: 3
+
+  .section.skills
+    break-before: page
+    break-inside: avoid-page
+
+  .footer
+    display: none
+    .copyright:first-of-type
+      position: running(footerRunning)
+      font-size: 6px
+
+  #print-btn
+    display: none
+
+  @page chapter:first
+
+.section
+  page: chapter
+  /* this and the empty "@page chapter:first" rule let pagedjs create the
+  /* ".pagedjs_chapter_first_page" classes
+
+.pagedjs_chapter_first_page div.main > section:first-child
+  padding-top: 0

@@ -1,0 +1,12 @@
+<aside class="menu lang-menu">
+  <p class="menu-label">Variants</p>
+  <ul class="menu-list">
+    {{- range $.Site.Home.AllTranslations -}}
+        {{- $className := "" -}}
+        {{ if eq $.Site.Language.Lang .Language.Lang }}
+            {{- $className = "is-active" -}}
+        {{ end }}
+    <li><a class="{{ $className }}" href="{{ .Permalink }}" title="lang-{{.Language.Lang}} site-lang-{{$.Site.Language.Lang}}">{{upper (or .Language.LanguageName .Language.Lang) }}</a></li>
+    {{- end -}}
+  </ul>
+</aside>
