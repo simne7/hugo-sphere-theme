@@ -58,9 +58,8 @@ jobs:
           path: ./dist
       - name: Copy dist to theme folder
         run: mkdir ./exampleSite/themes && cp -r ./dist ./exampleSite/themes/hugo-sphere-theme
-      - name: Change directory
-        run: cd ./exampleSite
       - name: Build with Hugo
+        working-directory: exampleSite
         env:
           # For maximum backward compatibility with Hugo modules
           HUGO_ENVIRONMENT: production
@@ -72,7 +71,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: ./exampleSite/public
 
   # Deployment job
   deploy:
