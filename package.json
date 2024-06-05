@@ -9,7 +9,7 @@
     "make:dist": "rm -rf dist && npm run make:sass && npm run make:copy && npm run make:clean",
     "make:sass": "sass -s compressed assets/sass/main.sass:dist/assets/css/main.css",
     "make:copy": "cp -r archetypes exampleSite images layouts static README.md LICENSE.md theme.toml dist/ && cp -r assets/print dist/assets/",
-    "make:clean": "rm -rf dist/exampleSite/public dist/exampleSite/dist dist/exampleSite/resources dist/exampleSite/.*",
+    "make:clean": "rm -rf dist/exampleSite/public dist/exampleSite/dist dist/exampleSite/resources && rm -f dist/exampleSite/.*",
     "postinstall": "cp -r node_modules/@mdi/font/fonts static"
   },
   "repository": {
