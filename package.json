@@ -1,6 +1,6 @@
 {
   "name": "hugo-sphere-theme",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Hugo theme for resumes/CV focussed on software developers and engineers",
   "main": "index.js",
   "scripts": {
