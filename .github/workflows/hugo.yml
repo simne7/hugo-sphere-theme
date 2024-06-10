@@ -31,6 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.124.1
+    outputs:
+      short_sha: ${{ steps.vars.outputs.short_sha }}
     steps:
       - name: Install Hugo CLI
         run: |
@@ -108,8 +110,10 @@ jobs:
           path: ./hugo-sphere-theme
       - name: Debug II
         run: ls -R
-      - name: Debug III
-        run: echo ${{ jobs.build.steps.vars.outputs.short_sha }}
+      - name: Debug IIIa
+        run: echo ${{ needs.build.outputs.short_sha }}
+      - name: Debug IIIb
+        run: echo ${{ needs.build.steps.vars.outputs.short_sha }}
       - name: Create TAR archive
         run: cd hugo-sphere-theme && tar -czf ../hugo-sphere-theme-v0.0.0.tar.gz .
       - name: Create ZIP archive
