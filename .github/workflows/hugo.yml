@@ -57,7 +57,7 @@ jobs:
         id: vars
         run: |
           calculatedSha=$(git rev-parse --short ${{ github.sha }})
-          echo "::set-output name=short_sha::$calculatedSha"
+          echo "short_sha=$calculatedSha" >> "$GITHUB_OUTPUT"
       - name: Archive distribution artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -104,8 +104,6 @@ jobs:
         run: ls -R
       - name: Debug Ib
         run: echo ${{ needs.build.outputs.short_sha }}
-      - name: Debug Ic
-        run: echo ${{ needs.build.steps.vars.outputs.short_sha }}
       # download dist artifact
       - name: Download distribution artifact
         uses: actions/download-artifact@v4
@@ -121,5 +119,9 @@ jobs:
       - name: Debug III
         run: ls -R
       # create release from tag and attach archives
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - name: Create release
-        run: gh release create v0.0.0 --repo ${{ github.repositoryUrl }} --notes "test release" ./hugo-sphere-theme-v0.0.0.*
+        run: gh release create v0.0.0 --draft --notes "test release" ./hugo-sphere-theme-v0.0.0.*
