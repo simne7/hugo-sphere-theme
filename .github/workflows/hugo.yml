@@ -91,12 +91,15 @@ jobs:
     needs: build
     # if: ${{ startsWith(github.ref, 'refs/tags/') }}
     steps:
+      - name: Debug I
+        run: ls -R
       # download dist artifact
       - name: Download distribution artifact
         uses: actions/download-artifact@v4
         with:
           name: hugo-sphere-theme
-      - name: Debug
+          path: ./hugo-sphere-theme
+      - name: Debug II
         run: ls -R
       - name: Create TAR archive
         run: cd hugo-sphere-theme && tar -czf ../hugo-sphere-theme.tar.gz .
