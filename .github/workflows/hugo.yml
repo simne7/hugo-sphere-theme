@@ -109,7 +109,7 @@ jobs:
       - name: Debug II
         run: ls -R
       - name: Debug III
-        run: echo "Short SHA: ${{ jobs.build.steps.vars.outputs.short_sha }}"
+        run: echo ${{ jobs.build.steps.vars.outputs.short_sha }}
       - name: Create TAR archive
         run: cd hugo-sphere-theme && tar -czf ../hugo-sphere-theme-v0.0.0.tar.gz .
       - name: Create ZIP archive
