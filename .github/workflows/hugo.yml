@@ -100,25 +100,25 @@ jobs:
     needs: build
     # if: ${{ startsWith(github.ref, 'refs/tags/') }}
     steps:
-      - name: Debug I
+      - name: Debug Ia
         run: ls -R
+      - name: Debug Ib
+        run: echo ${{ needs.build.outputs.short_sha }}
+      - name: Debug Ic
+        run: echo ${{ needs.build.steps.vars.outputs.short_sha }}
       # download dist artifact
       - name: Download distribution artifact
         uses: actions/download-artifact@v4
         with:
-          name: hugo-sphere-theme
+          name: hugo-sphere-theme-${{ needs.build.outputs.short_sha }}
           path: ./hugo-sphere-theme
       - name: Debug II
         run: ls -R
-      - name: Debug IIIa
-        run: echo ${{ needs.build.outputs.short_sha }}
-      - name: Debug IIIb
-        run: echo ${{ needs.build.steps.vars.outputs.short_sha }}
       - name: Create TAR archive
         run: cd hugo-sphere-theme && tar -czf ../hugo-sphere-theme-v0.0.0.tar.gz .
       - name: Create ZIP archive
         run: cd hugo-sphere-theme && zip -r ../hugo-sphere-theme-v0.0.0.zip .
-      - name: Debug IV
+      - name: Debug III
         run: ls -R
       # create release from tag and attach archives
       - name: Create release
