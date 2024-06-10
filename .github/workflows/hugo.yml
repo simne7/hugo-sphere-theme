@@ -100,6 +100,10 @@ jobs:
     needs: build
     # if: ${{ startsWith(github.ref, 'refs/tags/') }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - name: Debug Ia
         run: ls -R
       - name: Debug Ib
@@ -119,9 +123,5 @@ jobs:
       - name: Debug III
         run: ls -R
       # create release from tag and attach archives
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
       - name: Create release
         run: gh release create v0.0.0 --draft --notes "test release" ./hugo-sphere-theme-v0.0.0.*
