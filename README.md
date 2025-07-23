@@ -27,9 +27,7 @@ Additionally, the theme is optimized for print and ships prepared for `pagedjs` 
 
 ## Demo
 
-TODO
-
-You can see it in action on [Hugo Themes site](http://themes.gohugo.io/theme/hugo-sphere-theme/).
+https://simne7.github.io/hugo-sphere-theme/
 
 ## Contents
 
