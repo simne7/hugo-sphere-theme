@@ -1,6 +1,6 @@
 {
   "name": "hugo-sphere-theme",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Hugo theme for resumes/CV focussed on software developers and engineers",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@gitlab.viinet.de:333/simon.mang/hugocvtheme.git"
+    "url": "https://github.com/simne7/hugo-sphere-theme.git"
   },
   "keywords": ["hugo", "theme", "orbit", "CV", "resume", "bulma"],
   "author": "Simon Mang",
