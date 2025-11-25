@@ -8,16 +8,18 @@
     {{ with where . "IsPage" true }}
       {{ range .ByWeight }}
       <div class="experience">
-        <div class="meta level">
-          <div class="level-left">
-            <div class="level-item">
-              <h3 class="job-title">{{ .Params.position }}</h3>
-              <span class="company">{{ .Params.company }}</span>
+        <div class="meta">
+          <h3 class="job-title">{{ .Params.position }}</h3>
+          <div class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <span class="company">{{ .Params.company }}</span>
+              </div>
             </div>
-          </div>
-          <div class="level-right">
-            <div class="level-item">
-              <span class="time">{{ .Params.dates }}</span>
+            <div class="level-right">
+              <div class="level-item">
+                <span class="time">{{ .Params.dates }}</span>
+              </div>
             </div>
           </div>
         </div>
