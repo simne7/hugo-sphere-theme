@@ -4,25 +4,25 @@
 {{ partial "sidebar/profile.html" (index (where $pages "IsSection" true) 0) }}
 
 {{ if not (in .Site.Params.exclude "contact") }}
-{{ with index (where $pages "Page.Path" "/profile/contact") 0 }}
-{{ partial "sidebar/contact.html" .Params }}
-{{ end }}
+  {{ with index (where $pages "Page.Path" "/profile/contact") 0 }}
+    {{ partial "sidebar/contact.html" .Params }}
+  {{ end }}
 {{ end }}
 
 {{ if not (in .Site.Params.exclude "education") }}
-{{ with index (where $pages "Page.Path" "/profile/education") 0 }}
-{{ partial "sidebar/education.html" .Params }}
-{{ end }}
+  {{ with index (where $pages "Page.Path" "/profile/education") 0 }}
+    {{ partial "sidebar/education.html" .Params }}
+  {{ end }}
 {{ end }}
 
 {{ if not (in .Site.Params.exclude "languages") }}
-{{ with index (where $pages "Page.Path" "/profile/languages") 0 }}
-{{ partial "sidebar/languages.html" .Params }}
-{{ end }}
+  {{ with index (where $pages "Page.Path" "/profile/languages") 0 }}
+    {{ partial "sidebar/languages.html" .Params }}
+  {{ end }}
 {{ end }}
 
 {{ if not (in .Site.Params.exclude "interests") }}
-{{ with index (where $pages "Page.Path" "/profile/interests") 0 }}
-{{ partial "sidebar/interests.html" .Params }}
-{{ end }}
+  {{ with index (where $pages "Page.Path" "/profile/interests") 0 }}
+    {{ partial "sidebar/interests.html" .Params }}
+  {{ end }}
 {{ end }}

@@ -1,33 +1,33 @@
 {{ $allPages := .Scratch.Get "AllPages" }}
 
 {{ with where $allPages "Section" "experiences" }}
-<section class="section experiences">
+  <section class="section experiences">
     {{ with index (where . "IsSection" true) 0 }}
       {{ partial "section_heading.html" (dict "icon" .Params.icon "title" .Params.title) }}
     {{ end }}
     {{ with where . "IsPage" true }}
       {{ range .ByWeight }}
-      <div class="experience">
-        <div class="meta">
-          <h3 class="job-title">{{ .Params.position }}</h3>
-          <div class="level">
-            <div class="level-left">
-              <div class="level-item">
-                <span class="company">{{ .Params.company }}</span>
+        <div class="experience">
+          <div class="meta">
+            <h3 class="job-title">{{ .Params.position }}</h3>
+            <div class="level">
+              <div class="level-left">
+                <div class="level-item">
+                  <span class="company">{{ .Params.company }}</span>
+                </div>
               </div>
-            </div>
-            <div class="level-right">
-              <div class="level-item">
-                <span class="time">{{ .Params.dates }}</span>
+              <div class="level-right">
+                <div class="level-item">
+                  <span class="time">{{ .Params.dates }}</span>
+                </div>
               </div>
             </div>
           </div>
+          {{ with .Content }}
+            <div class="details content">{{ . | markdownify }}</div>
+          {{ end }}
         </div>
-        {{ with .Content }}
-        <div class="details content">{{ . | markdownify }}</div>
-        {{ end }}
-      </div>
       {{ end }}
     {{ end }}
-</section>
+  </section>
 {{ end }}

@@ -1,17 +1,17 @@
 {{ $allPages := .Scratch.Get "AllPages" }}
 {{ with index (where $allPages "Page.Path" "/skills") 0 }}
-<section class="section skills">
+  <section class="section skills">
     {{ partial "section_heading.html" (dict "icon" .Params.icon "title" .Params.title) }}
     {{ range .Params.Skills }}
-    <div class="columns">
-      <div class="column is-two-fifths" >
-        <span class="level-title">{{ .skill }}</h>
+      <div class="columns">
+        <div class="column is-two-fifths">
+          <span class="level-title">{{ .skill }}</span>
+        </div>
+        <div class="column">
+          <progress class="progress is-small" value="{{ .level }}" max="100">{{ .level }}%</progress>
+        </div>
       </div>
-      <div class="column" >
-        <progress class="progress is-small" value="{{ .level }}" max="100">{{ .level }}%</progress>
-      </div>
-    </div>
     {{ end }}
-</section><!--//skills-section-->
+  </section>
+  <!--//skills-section-->
 {{ end }}
-

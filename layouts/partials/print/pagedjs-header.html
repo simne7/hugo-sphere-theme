@@ -1,22 +1,22 @@
 {{ $interface := resources.Get "print/interface.css" | minify  | resources.Fingerprint "md5" }}
-<link rel="stylesheet" href="{{ $interface.Permalink }}" integrity="{{ $interface.Data.Integrity }}">
+<link rel="stylesheet" href="{{ $interface.Permalink }}" integrity="{{ $interface.Data.Integrity }}" />
 
 {{ $pagedjs := resources.Get "print/paged.polyfill.js" | resources.Fingerprint "md5" }}
 <script src="{{ $pagedjs.Permalink }}" type="module"></script>
 
 <script>
-    window.PagedConfig = {
-        auto: false
-    };
+  window.PagedConfig = {
+    auto: false,
+  };
 
-    window.addEventListener("load", function () {
-        if (document.querySelector('#print-btn')) {
-            document.querySelector('#print-btn').addEventListener("click", pagedJsPrint);
-        }
-    });
-
-    async function pagedJsPrint() {
-        await window.PagedPolyfill.preview();
-        window.print();
+  window.addEventListener("load", function () {
+    if (document.querySelector("#print-btn")) {
+      document.querySelector("#print-btn").addEventListener("click", pagedJsPrint);
     }
+  });
+
+  async function pagedJsPrint() {
+    await window.PagedPolyfill.preview();
+    window.print();
+  }
 </script>

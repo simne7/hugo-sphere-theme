@@ -7,21 +7,47 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "hugo server --source exampleSite --themesDir=../..",
     "make:dist": "rm -rf dist && npm run make:sass && npm run make:copy && npm run make:clean",
-    "make:sass": "sass -s compressed assets/sass/main.sass:dist/assets/css/main.css",
+    "make:sass": "sass -s compressed assets/sass/main.scss:dist/assets/css/main.css",
     "make:copy": "cp -r archetypes exampleSite images layouts static README.md LICENSE.md theme.toml dist/ && cp -r assets/print dist/assets/",
     "make:clean": "rm -rf dist/exampleSite/public dist/exampleSite/dist dist/exampleSite/resources && find ./dist/exampleSite -name \".*\" -exec rm -rf -- {} +",
-    "postinstall": "cp -r node_modules/@mdi/font/fonts static"
+    "postinstall": "cp -r node_modules/@mdi/font/fonts static",
+    "prepare": "husky",
+    "lint": "npm run lint:html && npm run lint:toml",
+    "lint:fix": "npm run lint:fix:html && npm run lint:fix:toml",
+    "lint:staged": "lint-staged",
+    "lint:html": "prettier --check '**/*.html'",
+    "lint:fix:html": "prettier --write '**/*.html'",
+    "lint:toml": "prettier --check '**/*.toml'",
+    "lint:fix:toml": "prettier --write '**/*.toml'"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/simne7/hugo-sphere-theme.git"
   },
-  "keywords": ["hugo", "theme", "orbit", "CV", "resume", "bulma"],
+  "keywords": [
+    "hugo",
+    "theme",
+    "orbit",
+    "CV",
+    "resume",
+    "bulma"
+  ],
   "author": "Simon Mang",
   "license": "MIT",
   "dependencies": {
     "@mdi/font": "^5.9.55",
     "bulma": "^0.9.3",
     "sass": "^1.77.1"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.6.2",
+    "prettier-plugin-go-template": "^0.0.15",
+    "prettier-plugin-toml": "^2.0.6"
+  },
+  "lint-staged": {
+    "*.html": "prettier -c",
+    "*.toml": "prettier -c"
   }
 }

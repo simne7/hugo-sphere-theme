@@ -8,10 +8,10 @@ features = ["colour schemes", "multilingual"]
 min_version = 0.16
 
 [author]
-  name = "Simon Mang"
-  homepage = "//viinet.de"
+name = "Simon Mang"
+homepage = "//viinet.de"
 
 [original]
-  name = "Xiaoying Riley"
-  homepage = "//github.com/xriley"
-  repo = "//github.com/xriley/Orbit-Theme"
+name = "Xiaoying Riley"
+homepage = "//github.com/xriley"
+repo = "//github.com/xriley/Orbit-Theme"

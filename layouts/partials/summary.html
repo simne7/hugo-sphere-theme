@@ -1,9 +1,10 @@
 {{ $allPages := .Scratch.Get "AllPages" }}
 {{ with index (where $allPages "Page.Path" "/summary") 0 }}
-<section class="section summary">
-  {{ partial "section_heading.html" (dict "icon" .Params.icon "title" .Params.title) }}
-  {{ with .Content }}
-    <div class="content">{{ . | markdownify }}</div>
-  {{ end }}
-</section><!--//section-->
+  <section class="section summary">
+    {{ partial "section_heading.html" (dict "icon" .Params.icon "title" .Params.title) }}
+    {{ with .Content }}
+      <div class="content">{{ . | markdownify }}</div>
+    {{ end }}
+  </section>
+  <!--//section-->
 {{ end }}

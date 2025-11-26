@@ -5,11 +5,15 @@
     {{ $pic := $resource.Fill "192x192 jpg" }}
     <figure class="image is-96x96 mx-auto">
       <!-- If the given picture is not a page resource fall back to the static files -->
-      <img class="is-rounded" src="{{ $pic.Permalink | default (printf "%simages/%s"  .Site.BaseURL .Params.Picture) }}" alt="{{ .Params.Name }}">
+      <img
+        class="is-rounded"
+        src="{{ $pic.Permalink | default (printf "%simages/%s"  .Site.BaseURL .Params.Picture) }}"
+        alt="{{ .Params.Name }}"
+      />
     </figure>
     <h1 class="name">{{ .Params.Name }}</h1>
     {{ with .Params.Tagline }}
-    <h3 class="tagline text-dark">{{ . }}</h3>
+      <h3 class="tagline text-dark">{{ . }}</h3>
     {{ end }}
   </div>
 </header>
