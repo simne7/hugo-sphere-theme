@@ -20,6 +20,7 @@
         allOsPackages = with pkgs; [
           hugo
           nodejs_22
+          dart-sass
         ];
         linuxOnlyPackages = [
           #

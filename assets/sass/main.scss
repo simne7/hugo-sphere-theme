@@ -1,0 +1,234 @@
+@charset "utf-8";
+
+// Import the initial variables
+@import "../../node_modules/bulma/sass/utilities/initial-variables.sass";
+@import "./utils/theme-variables";
+
+// Import only what you need from Bulma
+@import "../../node_modules/bulma/sass/base/_all.sass"; // stylelint-disable-line scss/load-no-partial-leading-underscore
+@import "../../node_modules/bulma/sass/components/level.sass";
+@import "../../node_modules/bulma/sass/components/menu.sass";
+@import "../../node_modules/bulma/sass/elements/box.sass";
+@import "../../node_modules/bulma/sass/elements/container.sass";
+@import "../../node_modules/bulma/sass/elements/image.sass";
+@import "../../node_modules/bulma/sass/elements/icon.sass";
+@import "../../node_modules/bulma/sass/elements/content.sass";
+@import "../../node_modules/bulma/sass/elements/progress.sass";
+@import "../../node_modules/bulma/sass/grid/columns.sass";
+@import "../../node_modules/bulma/sass/helpers/spacing.sass";
+@import "../../node_modules/bulma/sass/helpers/typography.sass";
+@import "../../node_modules/bulma/sass/layout/section.sass";
+@import "../../node_modules/bulma/sass/layout/footer.sass";
+@import "../../node_modules/bulma/sass/utilities/_all.sass"; // stylelint-disable-line scss/load-no-partial-leading-underscore
+@import "../../node_modules/@mdi/font/scss/materialdesignicons";
+@import "./print";
+
+$progress-bar-background-color: $smoky-white;
+
+html,
+body {
+  color: $text-color;
+  background-color: $body-background;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+}
+
+main > .columns {
+  margin-top: 3rem;
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.lang-menu {
+  padding: 1rem;
+  width: 12rem;
+  background-color: $main-background;
+  position: fixed;
+}
+
+.main {
+  background-color: $main-background;
+
+  section {
+    h2 {
+      color: var(--theme-color-secondary);
+      text-transform: uppercase;
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+
+    .icon-text {
+      align-items: center;
+    }
+
+    .icon {
+      color: var(--theme-color-invert);
+      background-color: var(--theme-color-secondary);
+      border-radius: 100px;
+    }
+
+    &.summary {
+      text-align: justify;
+
+      ul {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.sidebar {
+  background-color: var(--theme-color);
+  color: var(--theme-color-invert);
+
+  /* sidebar global */
+  section {
+    padding: 2rem 1rem;
+
+    &:first-of-type {
+      padding-top: 1rem;
+    }
+
+    h2 {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    li {
+      padding: 0.5rem 0;
+    }
+  }
+
+  .text-dark {
+    color: var(--theme-color-invert-dark);
+  }
+
+  /* profile header */
+  .profile {
+    background-color: var(--theme-profile-background);
+    text-align: center;
+  }
+
+  .name {
+    font-weight: 900;
+    margin: 15px 0 10px;
+    font-size: 2.25em;
+    padding: 0 1rem;
+  }
+
+  .tagline {
+    font-size: 1.25em;
+    padding: 0 1rem;
+  }
+
+  /* contact details */
+  .contact {
+    .icon-text {
+      display: flex;
+      flex-wrap: nowrap;
+
+      .icon {
+        align-self: center;
+      }
+    }
+
+    .text {
+      flex-grow: 1;
+      overflow-wrap: anywhere;
+    }
+
+    a {
+      color: var(--theme-color-invert);
+      display: block;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  } /* education */
+  .education {
+    .degree {
+      font-weight: bold;
+      margin: 0.75rem 0 0.25rem;
+    }
+  }
+}
+
+.motivation {
+  .location {
+    text-align: right;
+  }
+}
+
+.experience {
+  margin-bottom: 2rem;
+
+  .meta {
+    margin-bottom: 0.75rem;
+    align-items: start;
+
+    .level-left > .level-item {
+      display: block;
+    }
+  }
+
+  .job-title {
+    display: block;
+    font-size: 1.15em;
+    font-weight: bold;
+  }
+
+  .company,
+  .time {
+    color: $text-grey;
+  }
+}
+
+.skills {
+  .columns {
+    align-items: center;
+    margin-bottom: 0;
+  }
+
+  progress {
+    &::-webkit-progress-bar {
+      background-color: $progress-bar-background-color;
+    }
+
+    &::-webkit-progress-value {
+      background-color: var(--theme-progress-value-background);
+    }
+
+    &::-moz-progress-bar {
+      background-color: var(--theme-progress-value-background);
+    }
+
+    &::-ms-fill {
+      background-color: $progress-bar-background-color;
+    }
+  }
+}
+
+.projects {
+  .project {
+    margin-top: 1rem;
+
+    .title {
+      color: var(--theme-color-secondary);
+      font-size: 1.15em;
+
+      a {
+        color: inherit;
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: $smoky-white;
+}

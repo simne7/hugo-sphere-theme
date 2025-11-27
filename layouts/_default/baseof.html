@@ -11,15 +11,32 @@
     {{- partial "print/pagedjs-header.html" . -}}
 
 
-    <!--/*Load SASS during development*/-->
-    {{ with resources.Get "sass/main.sass" }}
-      {{ with . | toCSS | minify | resources.Fingerprint "md5" }}
-        <link rel="stylesheet" href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" />
+    <!--/*Load SASS during development|production*/-->
+    {{ with resources.Get "sass/main.scss" }}
+      {{ $opts := dict
+        "enableSourceMap" hugo.IsDevelopment
+        "outputStyle" (cond hugo.IsDevelopment "expanded" "compressed")
+        "targetPath" "css/main.css"
+        "transpiler" "dartsass"
+      }}
+      {{ with . | toCSS $opts }}
+        {{ if hugo.IsDevelopment }}
+          <link rel="stylesheet" href="{{ .RelPermalink }}" />
+        {{ else }}
+          {{ with . | fingerprint }}
+            <link
+              rel="stylesheet"
+              href="{{ .RelPermalink }}"
+              integrity="{{ .Data.Integrity }}"
+              crossorigin="anonymous"
+            />
+          {{ end }}
+        {{ end }}
       {{ end }}
     {{ else }}
       <!--/*Load CSS when distributed*/-->
       {{ with resources.Get "css/main.css" }}
-        {{ with . | resources.Fingerprint "md5" }}
+        {{ with . | fingerprint }}
           <link rel="stylesheet" href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" />
         {{ end }}
       {{ end }}

@@ -29,7 +29,8 @@ languageName = "AWS (de)"
 title = "John Doe - Lebenslauf (AWS)"
 
 [languages.de-aws.params]
-exclude = ["contact"] # ... and have different settings for them
+style = "style4" # ... and have different settings for them
+exclude = []     # you might have to reset default settings
 
 # Configuration
 

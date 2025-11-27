@@ -1,0 +1,187 @@
+@media screen {
+  #print-btn {
+    position: fixed;
+    z-index: 20000;
+    background: black;
+    fill: white;
+    color: white;
+    padding: 1em;
+    right: 30px;
+    top: 30px;
+  }
+}
+
+@media print {
+  // stylelint-disable-next-line scss/at-rule-no-unknown
+  @page {
+    size: a4;
+    margin: 1.5cm 1cm 1.5cm 5cm;
+
+    @top-left-corner {
+      content: " ";
+      background: var(--theme-color);
+    }
+
+    @bottom-left-corner {
+      content: " ";
+      background: var(--theme-color);
+    }
+
+    @bottom-center {
+      content: counter(page);
+    }
+
+    @left-middle {
+      content: "";
+      background: var(--theme-color);
+    }
+  }
+
+  // stylelint-disable-next-line scss/at-rule-no-unknown
+  @page:first {
+    margin: 1.5cm 1cm 1.5cm 5cm;
+
+    @top-left-corner {
+      content: "";
+      background: var(--theme-profile-background);
+    }
+
+    @top-center {
+      content: "";
+    }
+
+    @bottom-left-corner {
+      content: "";
+    }
+
+    @bottom-center {
+      content: "";
+    }
+
+    // stylelint-disable-next-line scss/at-rule-no-unknown
+    @left {
+      content: element(sidebar);
+      background: var(--theme-color);
+      align-items: normal;
+    }
+  }
+
+  html,
+  body {
+    background-color: #fff;
+  }
+
+  .lang-menu {
+    display: none;
+  }
+
+  .sidebar {
+    position: running(sidebar);
+    font-size: 10px;
+    text-align: left;
+    width: 5cm !important;
+    margin-top: 0;
+
+    header {
+      padding-top: 0 !important;
+      padding-bottom: 1.5cm !important;
+
+      .name {
+        font-size: 2em;
+      }
+    }
+
+    section {
+      padding: 1rem;
+
+      h2 {
+        margin-bottom: 0.5rem;
+      }
+
+      li {
+        padding: 0.2rem 0;
+      }
+    }
+
+    .contact {
+      li .text {
+        line-height: 1rem;
+      }
+    }
+
+    .education .degree {
+      margin-bottom: 0.1rem;
+    }
+  }
+
+  .experience {
+    .meta {
+      break-inside: avoid;
+
+      .level-right {
+        margin-top: 0;
+      }
+    }
+  }
+
+  // remove space at top
+  // and negative margins which cause overlap with sidebar
+  main > .columns {
+    margin: 0;
+
+    .main {
+      padding: 0;
+    }
+
+    &.reverse {
+      flex-direction: row;
+    }
+  }
+
+  .btn-translate {
+    display: none;
+  }
+
+  .section {
+    padding-top: 0; // reduce gap between sections
+  }
+
+  .section.motivation {
+    break-after: page;
+
+    .content {
+      text-align: justify;
+    }
+  }
+
+  .section.experiences {
+    .experience {
+      .meta {
+        break-after: avoid;
+      }
+
+      .details {
+        orphans: 3;
+        widows: 3;
+      }
+    }
+  }
+
+  .section.skills {
+    break-before: page;
+    break-inside: avoid-page;
+  }
+
+  .footer {
+    display: none;
+
+    .copyright:first-of-type {
+      position: running(footerrunning);
+      font-size: 6px;
+    }
+  }
+
+  #print-btn {
+    display: none;
+  }
+}
